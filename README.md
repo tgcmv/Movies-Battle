@@ -1,2 +1,3 @@
 # Movies-Battle
-Movies Battle based imdb avaliation
+Movie battle. Game based on imdb score
+
