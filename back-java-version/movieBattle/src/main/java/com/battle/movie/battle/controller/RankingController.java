@@ -28,7 +28,7 @@ public class RankingController {
         this.service = service;
     }
 
-    @GetMapping("/rankign")
+    @GetMapping("/ranking")
     public ResponseEntity<Collection<RankingDTO>> getRanking() {
         log.info("m=getRanking");
         Collection<RankingDTO> topRanking = service.getTopRanking();

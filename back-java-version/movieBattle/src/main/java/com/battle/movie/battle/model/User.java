@@ -16,6 +16,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.NotBlank;
 import java.util.Set;
 
 @Getter
@@ -33,7 +34,12 @@ public class User {
     private String id;
 
     @Column
+    @NotBlank
     private String name;
+
+    @Column
+    @NotBlank
+    private String password;
 
     @JsonBackReference
     @OneToMany(fetch = FetchType.LAZY)
