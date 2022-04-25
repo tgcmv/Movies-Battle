@@ -1,7 +1,6 @@
 package com.battle.movie.battle.service.impl;
 
 import com.battle.movie.battle.core.OMDBAPIAccess;
-import com.battle.movie.battle.model.Movie;
 import com.battle.movie.battle.repository.MovieRepository;
 import com.battle.movie.battle.service.IMovieService;
 import lombok.extern.slf4j.Slf4j;
@@ -13,8 +12,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
-import java.util.Collection;
-import java.util.HashSet;
 
 @Service
 @Slf4j

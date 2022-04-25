@@ -2,18 +2,10 @@ package com.battle.movie.battle.service.impl;
 
 import com.battle.movie.battle.enums.UserStatus;
 import com.battle.movie.battle.model.User;
-import com.battle.movie.battle.model.dto.RankingDTO;
-import com.battle.movie.battle.repository.GameRoundRepository;
 import com.battle.movie.battle.repository.UserRepository;
-import com.battle.movie.battle.service.IRankingService;
 import com.battle.movie.battle.service.IUserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-
-import java.math.BigDecimal;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
 
 @Service
 @Slf4j
