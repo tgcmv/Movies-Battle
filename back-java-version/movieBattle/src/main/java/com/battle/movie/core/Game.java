@@ -34,7 +34,7 @@ public class Game {
 
     public Game(String userId) {
         this.userId = userId;
-        this.status = GameStatus.READY;
+        this.status = GameStatus.WAITING_HIT;
         this.waitingAnswer = false;
         this.mapMovies = new HashMap<>();
         this.movies = new HashSet<>();
@@ -43,16 +43,16 @@ public class Game {
 
     }
 
-    public void start() {
-        if (!GameStatus.READY.equals(this.status)) {
-            //TODO mesage
-            throw new IllegalStateException("");
-        }
-        this.status = GameStatus.START;
-    }
+//    public void start() {
+//        if (!GameStatus.READY.equals(this.status)) {
+//            //TODO mesage
+//            throw new IllegalStateException("");
+//        }
+//        this.status = GameStatus.STARTED;
+//    }
 
     public void end() {
-        if (!GameStatus.START.equals(this.status)) {
+        if (!GameStatus.WAITING_HIT.equals(this.status)) {
             //TODO mesage
             throw new IllegalStateException("");
         }
@@ -83,7 +83,7 @@ public class Game {
     }
 
     private boolean gameHasStarted() {
-        return GameStatus.START.equals(this.status);
+        return GameStatus.WAITING_HIT.equals(this.status);
     }
 
     public boolean chooseMovie(String imdbID) {

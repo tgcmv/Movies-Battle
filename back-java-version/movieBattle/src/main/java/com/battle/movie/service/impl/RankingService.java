@@ -31,12 +31,12 @@ public class RankingService implements IRankingService {
                         RankingDTO ranking = userScore.get(userId);
                         ranking.setRounds(ranking.getRounds() + 1);
                         ranking.setWrong(ranking.getWrong() + gr.getWrong());
-                        ranking.setPoints(ranking.getPoints() + gr.getScore());
+                        ranking.setPoints(ranking.getPoints() + gr.getPoint());
                     } else {
                         RankingDTO ranking = RankingDTO.builder().name(gr.getUser().getName()).build();
                         ranking.setRounds(1);
                         ranking.setWrong(gr.getWrong());
-                        ranking.setPoints(gr.getScore());
+                        ranking.setPoints(gr.getPoint());
 
                         userScore.put(userId, ranking);
                     }

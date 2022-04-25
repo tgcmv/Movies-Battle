@@ -47,7 +47,6 @@ public class Movie {
     private String poster;
 
     @Transient
-    @JsonIgnore
     private BigDecimal imdbRating;
 
     @Override

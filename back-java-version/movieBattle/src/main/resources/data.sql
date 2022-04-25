@@ -2,10 +2,10 @@
 INSERT INTO USER (ID, NAME , PASSWORD) VALUES('asd67987asdfs98dg7fsd', 'thiago', '$2a$10$99Wg0MPAfRv2jHz1U4lhO.zw/VgD5wnpAsXTYLAyrRio2hhZH.pxm');
 INSERT INTO USER (ID, NAME , PASSWORD) VALUES('cvh9876sd6fsdg98s6sdg', 'andrezza', '$2a$10$99Wg0MPAfRv2jHz1U4lhO.zw/VgD5wnpAsXTYLAyrRio2hhZH.pxm');
 
-INSERT INTO GAME_ROUND (id, score, WRONG, USER_ID) VALUES('asfdfgfrt3435', 5, 3, 'asd67987asdfs98dg7fsd');
-INSERT INTO GAME_ROUND (id, score, WRONG, USER_ID) VALUES('a123sfdfgfrt3435', 5, 3, 'asd67987asdfs98dg7fsd');
-INSERT INTO GAME_ROUND (id, score, WRONG, USER_ID) VALUES('a123sfdfgfrt13435', 7, 0, 'cvh9876sd6fsdg98s6sdg');
-INSERT INTO GAME_ROUND (id, score, WRONG, USER_ID) VALUES('a123sfdf3gfrt13435', 1, 0, 'cvh9876sd6fsdg98s6sdg');
+INSERT INTO GAME_ROUND ( score, WRONG, USER_ID) VALUES( 5, 3, 'asd67987asdfs98dg7fsd');
+INSERT INTO GAME_ROUND ( score, WRONG, USER_ID) VALUES( 5, 3, 'asd67987asdfs98dg7fsd');
+INSERT INTO GAME_ROUND ( score, WRONG, USER_ID) VALUES( 7, 0, 'cvh9876sd6fsdg98s6sdg');
+INSERT INTO GAME_ROUND ( score, WRONG, USER_ID) VALUES( 1, 0, 'cvh9876sd6fsdg98s6sdg');
 
 INSERT INTO MOVIE (ID, IMDBID, POSTER, TITLE, "YEAR") VALUES(1, 'tt0111161', 'https://m.media-amazon.com/images/M/MV5BMDFkYTc0MGEtZmNhMC00ZDIzLWFmNTEtODM1ZmRlYWMwMWFmXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_SX300.jpg', 'The Shawshank Redemption', '1994');
 INSERT INTO MOVIE (ID, IMDBID, POSTER, TITLE, "YEAR") VALUES(2, 'tt0068646', 'https://m.media-amazon.com/images/M/MV5BM2MyNjYxNmUtYTAwNi00MTYxLWJmNWYtYzZlODY3ZTk3OTFlXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_SX300.jpg', 'The Godfather', '1972');

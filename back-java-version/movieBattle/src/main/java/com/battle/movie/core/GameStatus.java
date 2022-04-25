@@ -1,5 +1,5 @@
 package com.battle.movie.core;
 
 public enum GameStatus {
-    READY, START, END
+    END, WAITING_HIT
 }

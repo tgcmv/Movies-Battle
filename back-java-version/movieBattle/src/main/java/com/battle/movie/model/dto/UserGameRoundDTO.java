@@ -19,7 +19,7 @@ public class UserGameRoundDTO implements Serializable {
 
 	private static final long serialVersionUID = -8802512413689790338L;
 
-	private String id;
+	private Long id;
 
 	@NotBlank
 	private String name;

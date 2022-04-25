@@ -1,5 +1,6 @@
 package com.battle.movie.model;
 
+import com.battle.movie.core.GameStatus;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -8,8 +9,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
-import org.hibernate.annotations.GenericGenerator;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -17,6 +18,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import java.util.List;
 
 
 @Getter
@@ -29,19 +32,33 @@ import javax.persistence.ManyToOne;
 @Entity
 public class GameRound {
 
-	@Id @GeneratedValue(generator="system-uuid")
-	@GenericGenerator(name="system-uuid", strategy = "uuid")
-	private String id;
+    @Id
+    @GeneratedValue(generator = "increment")
+    private Long id;
 
-	@Column
-	private Integer score;
+    @Column
+    private Integer point;
 
-	@Column
-	private Integer wrong;
+    @Column
+    private Integer wrong;
 
-	@JsonBackReference
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "user_id")
-	private User user;
+    @Column
+    private GameStatus status;
+
+    @OneToMany(cascade= CascadeType.PERSIST)
+    @JoinColumn(name = "pair_movies_ID")
+    private List<PairMovies> pairMovies;
+
+    @JsonBackReference
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "user_id")
+    private User user;
+
+    public void addPoint(){
+        point++;
+    }
+    public void addWrong(){
+        wrong++;
+    }
 
 }
