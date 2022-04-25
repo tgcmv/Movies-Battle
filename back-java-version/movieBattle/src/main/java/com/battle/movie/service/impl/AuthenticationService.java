@@ -1,7 +1,7 @@
-package com.battle.movie.battle.service.impl;
+package com.battle.movie.service.impl;
 
-import com.battle.movie.battle.model.User;
-import com.battle.movie.battle.repository.UserRepository;
+import com.battle.movie.model.User;
+import com.battle.movie.repository.UserRepository;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;

@@ -1,6 +1,6 @@
-package com.battle.movie.battle.config;
+package com.battle.movie.config;
 
-import com.battle.movie.battle.service.impl.AuthenticationService;
+import com.battle.movie.service.impl.AuthenticationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

@@ -1,4 +1,4 @@
-package com.battle.movie.battle.enums;
+package com.battle.movie.enums;
 
 public enum Role {
     ROLE_USER,

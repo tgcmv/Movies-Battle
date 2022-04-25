@@ -1,4 +1,4 @@
-package com.battle.movie.battle.model;
+package com.battle.movie.model;
 
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;

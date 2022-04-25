@@ -1,8 +1,8 @@
-//package com.battle.movie.battle.controller;
+//package com.battle.movie.controller;
 //
-//import com.battle.movie.battle.model.GameRound;
-//import com.battle.movie.battle.model.dto.UserGameRoundDTO;
-//import com.battle.movie.battle.service._IGameRoundService;
+//import com.battle.movie.model.GameRound;
+//import com.battle.movie.model.dto.UserGameRoundDTO;
+//import com.battle.movie.service._IGameRoundService;
 //import io.swagger.v3.oas.annotations.tags.Tag;
 //import org.springframework.http.HttpStatus;
 //import org.springframework.http.ResponseEntity;

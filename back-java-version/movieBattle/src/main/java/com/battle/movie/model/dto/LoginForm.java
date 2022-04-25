@@ -1,4 +1,4 @@
-package com.battle.movie.battle.model.dto;
+package com.battle.movie.model.dto;
 
 import lombok.Data;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
