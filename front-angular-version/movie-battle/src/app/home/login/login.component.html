@@ -1,0 +1,30 @@
+<h4 class="text-center">Login</h4>
+
+<form class="form mt-4" (ngSubmit)="login()">
+  <div class="form-group">
+    <input
+      class="form-control"
+      placeholder="Nome do usuário"
+      name="user"
+      [(ngModel)]="user"
+      required
+    />
+  </div>
+
+  <div class="form-group">
+    <input
+      type="password"
+      class="form-control"
+      placeholder="Senha"
+      name="password"
+      [(ngModel)]="password"
+      required
+    />
+  </div>
+
+  <button type="submit" class="btn btn-primary btn-block">
+    Login
+  </button>
+</form>
+
+<p>Não é um usuário?<a [routerLink]="['newUser']">Se cadastre!</a></p>

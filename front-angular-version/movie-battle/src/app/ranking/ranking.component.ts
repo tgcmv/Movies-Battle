@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { lastValueFrom } from 'rxjs';
 import { Ranking } from "../../model/Ranking";
-import { environment } from '../../environments/environment';
-import { HttpClient } from '@angular/common/http';
+import { RankingService } from '../service/ranking.service';
 
 @Component({
   selector: 'app-ranking',
@@ -11,16 +10,14 @@ import { HttpClient } from '@angular/common/http';
 })
 export class RankingComponent implements OnInit {
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private rankingService : RankingService) { }
 
   rankings: Ranking[] = [];
 
   ngOnInit(): void {
-    this.get().toPromise().then(data => this.rankings = data!);
+    lastValueFrom(this.rankingService.get())
+        .then(data => this.rankings = data!);
+    
   }
-
-  get(): Observable<Ranking[]> {
-    return this.httpClient.get<Ranking[]>(`http://localhost:8080/public/ranking`);
-}
 
 }
