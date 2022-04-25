@@ -4,6 +4,7 @@ import { HomeComponent } from './home.component';
 import { HomeRoutingModule } from './home-routing.module';
 import { LoginComponent } from './login/login.component';
 import { FormsModule } from '@angular/forms';
+import { MessageModule } from '../components/message/message.module';
 
 
 
@@ -13,7 +14,7 @@ import { FormsModule } from '@angular/forms';
     LoginComponent
   ],
   imports: [
-    CommonModule, HomeRoutingModule, FormsModule
+    CommonModule, HomeRoutingModule, FormsModule, MessageModule
   ]
 })
 export class HomeModule { }
