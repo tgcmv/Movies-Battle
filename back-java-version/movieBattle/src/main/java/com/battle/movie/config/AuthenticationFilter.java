@@ -3,7 +3,6 @@ package com.battle.movie.config;
 import com.battle.movie.model.User;
 import com.battle.movie.service.impl.AuthenticationService;
 import org.apache.commons.lang3.StringUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.filter.OncePerRequestFilter;

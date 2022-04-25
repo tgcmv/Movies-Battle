@@ -1,10 +1,7 @@
 package com.battle.movie.controller;
 
-import com.battle.movie.enums.UserStatus;
-import com.battle.movie.model.User;
 import com.battle.movie.model.dto.LoginForm;
 import com.battle.movie.model.dto.TokenDto;
-import com.battle.movie.service.IUserService;
 import com.battle.movie.service.impl.AuthenticationService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

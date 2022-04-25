@@ -2,7 +2,6 @@ package com.battle.movie.controller;
 
 import com.battle.movie.model.dto.RankingDTO;
 import com.battle.movie.service.IRankingService;
-
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
