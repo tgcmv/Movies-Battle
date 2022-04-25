@@ -39,11 +39,6 @@ public class GameRound {
 	@Column
 	private Integer wrong;
 
-	//TODO
-//	@Column
-//	private List<String> movies;
-
-
 	@JsonBackReference
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "user_id")

@@ -46,10 +46,6 @@ public class Movie {
     @JsonProperty("Poster")
     private String poster;
 
-//    @Column
-//    @JsonProperty("Plot")
-//    private String plot;
-
     @Transient
     @JsonIgnore
     private BigDecimal imdbRating;
