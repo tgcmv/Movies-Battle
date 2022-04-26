@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { lastValueFrom } from 'rxjs';
-import { Ranking } from "../model/Ranking";
-import { RankingService } from '../service/ranking.service';
+import { Ranking } from "../../model/Ranking";
+import { RankingService } from '../../service/ranking.service';
 
 @Component({
   selector: 'app-ranking',

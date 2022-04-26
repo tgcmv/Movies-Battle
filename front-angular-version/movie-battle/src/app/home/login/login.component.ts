@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { lastValueFrom } from 'rxjs';
 import { AuthenticationService } from 'src/app/authentication/authentication.service';
+import { UserService } from 'src/app/service/user.service';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,7 @@ export class LoginComponent implements OnInit {
   user = '';
   password = '';
 
-  constructor(private authService: AuthenticationService, private router: Router) { }
+  constructor(private userService: UserService, private authService: AuthenticationService, private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -21,7 +22,8 @@ export class LoginComponent implements OnInit {
   login(){
     this.authService.authenticate(this.user, this.password)
     .subscribe(
-      () => {
+      (r) => {
+        this.userService.saveToken(r.token)
         this.router.navigate(['game']);
       },
       (error : any) => {
