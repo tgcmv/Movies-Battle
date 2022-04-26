@@ -13,8 +13,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -48,8 +50,8 @@ public class GameController {
         return ResponseEntity.ok(movies);
     }
 
-    @PostMapping("/hit")
-    public ResponseEntity<GameRoundDTO> hit(@RequestHeader("Authorization") String token, @RequestBody String imdbID) {
+    @GetMapping("/hit")
+    public ResponseEntity<GameRoundDTO> hit(@RequestHeader("Authorization") String token, @RequestParam("imdbid") @Valid String imdbID) {
         log.info("m=hit");
 
         GameRoundDTO dto = service.hit(authService.getUserId(token), imdbID);

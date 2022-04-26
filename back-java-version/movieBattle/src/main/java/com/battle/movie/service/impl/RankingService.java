@@ -7,6 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
@@ -45,7 +46,8 @@ public class RankingService implements IRankingService {
         userScore.values().stream().forEach(
                 ranking -> {
                     BigDecimal points = new BigDecimal(ranking.getPoints());
-                    BigDecimal hitPercentage = points.divide(new BigDecimal((ranking.getWrong() + ranking.getPoints())));
+                    BigDecimal tot = new BigDecimal((ranking.getWrong() + ranking.getPoints()));
+                    BigDecimal hitPercentage = tot.equals(BigDecimal.ZERO) ? BigDecimal.ZERO : points.divide(tot, 2, RoundingMode.DOWN);
                     ranking.setScore(hitPercentage.multiply(new BigDecimal(ranking.getRounds())));
                 }
         );

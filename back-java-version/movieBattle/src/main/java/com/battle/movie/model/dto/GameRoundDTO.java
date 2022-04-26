@@ -1,5 +1,6 @@
 package com.battle.movie.model.dto;
 
+import com.battle.movie.model.Movie;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -17,8 +18,6 @@ public class GameRoundDTO {
     private Integer wrongs;
     private boolean isRightHit;
     private boolean gameOver;
-    private String imdbA;
-    private String imdbB;
-    private BigDecimal rankingA;
-    private BigDecimal rankingB;
+    private Movie movieA;
+    private Movie movieB;
 }

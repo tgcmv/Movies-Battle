@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { lastValueFrom } from 'rxjs';
 import { Movie } from 'src/app/model/movie';
 import { GameService } from 'src/app/service/game.service';
+import { Game } from '../../model/game';
 
 @Component({
   selector: 'app-play',
@@ -10,7 +12,9 @@ import { GameService } from 'src/app/service/game.service';
 })
 export class PlayComponent implements OnInit {
   
-  constructor(private gameService : GameService) { }
+  game : Game | undefined;
+
+  constructor(private gameService : GameService, private router: Router) { }
 
   movies: Movie[] = [];
 
@@ -22,7 +26,26 @@ export class PlayComponent implements OnInit {
 
 
   movieSelect(imdbID : string){
-    console.log(imdbID)
+    
+      this.gameService.hit(imdbID)
+      .subscribe(
+        (game) => {
+          this.game = game;
+          lastValueFrom(this.gameService.nextMovies())
+          .then(data => this.movies = data!);
+
+          if(game.gameOver){
+            alert("GAME OVER")
+            this.router.navigate(['game']);
+          }
+          
+
+        },
+        (error : any) => {
+          alert('Error');
+          console.log(error);
+        }
+      );
   }
 
 }

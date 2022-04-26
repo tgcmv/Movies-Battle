@@ -84,6 +84,9 @@ public class GameService implements IGameService {
         final GameRound game = getAvaliableGameFor(user);
         GameRoundDTO gameRoundDTO = doHit(game, imdbID);
 
+        gameRoundDTO.setPoints(game.getPoint());
+        gameRoundDTO.setWrongs(game.getWrong());
+
         if (gameRoundDTO.isRightHit()) {
             game.addPoint();
             gameRoundDTO.setPoints(game.getPoint());
@@ -172,19 +175,28 @@ public class GameService implements IGameService {
 
         PairMovies pairMovies = game.getPairMovies().stream().filter(Predicate.not(PairMovies::isAnswered)).findFirst().get();
 
-        BigDecimal scoreA = movieService.getScoreMovie(pairMovies.getMovieA());
-        BigDecimal scoreB = movieService.getScoreMovie(pairMovies.getMovieB());
-        boolean isRightHit = imdbID.equalsIgnoreCase(scoreA.compareTo(scoreB) > 1 ? pairMovies.getMovieA() : pairMovies.getMovieB());
+        Movie movieA = movieService.getImdbDataMovie(pairMovies.getMovieA());
+        Movie movieB = movieService.getImdbDataMovie(pairMovies.getMovieB());
+
+        System.err.println(imdbID);
+        System.err.println(movieA.getImdbID() + " " + movieA.getTitle() + "  " +  movieA.getImdbRating());
+        System.err.println(movieB.getImdbID() + " " + movieB.getTitle() + "  " +  movieB.getImdbRating());
+        System.err.println(movieA.getImdbRating().compareTo(movieB.getImdbRating()));
+        System.err.println(movieA.getImdbRating().compareTo(movieB.getImdbRating()) > 1 ? pairMovies.getMovieA() : pairMovies.getMovieB());
+        boolean isRightHit =
+                imdbID.trim().equalsIgnoreCase(movieA.getImdbRating().compareTo(movieB.getImdbRating()) > 0 ? movieA.getImdbID().trim() : movieB.getImdbID().trim())
+                || movieA.getImdbRating().compareTo(movieB.getImdbRating()) == 0;
+        System.err.println(isRightHit);
 
         pairMovies.setAnswered(true);
         pairMoviesRepository.save(pairMovies);
 
         return GameRoundDTO.builder()
-                .imdbA(pairMovies.getMovieA())
-                .imdbB(pairMovies.getMovieB())
-                .rankingA(scoreA)
-                .rankingA(scoreB)
+                .movieA(movieA)
+                .movieB(movieB)
                 .gameOver(false)
+                .points(0)
+                .wrongs(0)
                 .isRightHit(isRightHit).build();
     }
 }

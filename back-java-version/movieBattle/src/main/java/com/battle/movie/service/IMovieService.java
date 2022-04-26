@@ -11,5 +11,5 @@ public interface IMovieService {
 
     Movie getMovie(String movieA);
 
-    BigDecimal getScoreMovie(String movieA);
+    Movie getImdbDataMovie(String movieA);
 }

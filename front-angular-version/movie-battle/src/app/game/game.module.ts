@@ -8,8 +8,7 @@ import { PlayComponent } from './play/play.component';
 
 @NgModule({
   declarations: [
-    GameComponent,
-    PlayComponent
+    GameComponent
   ],
   imports: [
     CommonModule,

@@ -54,11 +54,10 @@ public class MovieService implements IMovieService {
     }
 
     @Override
-    public BigDecimal getScoreMovie(String movieID) {
+    public Movie getImdbDataMovie(String movieID) {
         OMDBAPIAccess api = OMDBAPIAccess.getInstance();
         try {
-            Movie movie = api.getMovie(movieID);
-            return movie.getImdbRating();
+            return api.getMovie(movieID);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
