@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.Collection;
 
 @RestController
-@RequestMapping("/public")
+@RequestMapping("/ranking")
 @Slf4j
 public class RankingController {
 
@@ -21,7 +21,7 @@ public class RankingController {
         this.service = service;
     }
 
-    @GetMapping("/ranking")
+    @GetMapping
     public ResponseEntity<Collection<RankingDTO>> getRanking() {
         log.info("m=getRanking");
         Collection<RankingDTO> topRanking = service.getTopRanking();

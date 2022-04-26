@@ -12,6 +12,6 @@ export class RankingService {
   constructor(private httpClient: HttpClient) { }
 
   get(): Observable<Ranking[]> {
-    return this.httpClient.get<Ranking[]>(`${environment.backend}public/ranking`);
+    return this.httpClient.get<Ranking[]>(`${environment.backend}ranking`);
   }
 }
