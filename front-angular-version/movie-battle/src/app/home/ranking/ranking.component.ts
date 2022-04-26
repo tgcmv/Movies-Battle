@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { lastValueFrom } from 'rxjs';
-import { Ranking } from "../../model/Ranking";
+import { Ranking } from "../../model/ranking";
 import { RankingService } from '../../service/ranking.service';
 
 @Component({

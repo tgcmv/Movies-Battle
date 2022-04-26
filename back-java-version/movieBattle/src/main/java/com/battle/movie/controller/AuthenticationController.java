@@ -46,15 +46,4 @@ public class AuthenticationController {
         }
     }
 
-    //    @PostMapping("/register")
-//    public UserStatus registerUser(@Valid @RequestBody User newUser) {
-//        log.info("m=registerUser "  + newUser.toString());
-//        return service.register(newUser);
-//    }
-
-//    @PostMapping("/users/logout")
-//    public UserStatus logUserOut(@Valid @RequestBody User user) {
-//        log.info("m=logUserOut "  + user.toString());
-//        return service.logout(user);
-//    }
 }

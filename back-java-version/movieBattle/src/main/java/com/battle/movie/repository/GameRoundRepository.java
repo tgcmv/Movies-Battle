@@ -12,7 +12,7 @@ import java.util.Optional;
 
 @Repository
 public interface GameRoundRepository  extends JpaRepository<GameRound, Long>{
-    @Query("SELECT g FROM GameRound g WHERE g.status = ?1 AND g.user = ?2 ")
-    Optional<GameRound> findGamesFromUser(GameStatus status, User user);
+    @Query("SELECT g FROM GameRound g WHERE g.status IN (?1) AND g.user = ?2 ")
+    Optional<GameRound> findGamesFromUser(GameStatus[] status, User user);
 
 }

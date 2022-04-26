@@ -1,6 +1,8 @@
 package com.battle.movie.controller;
 
+import com.battle.movie.core.Game;
 import com.battle.movie.model.Movie;
+import com.battle.movie.model.dto.GameRoundDTO;
 import com.battle.movie.service.IGameService;
 import com.battle.movie.service.impl.AuthenticationService;
 import lombok.extern.slf4j.Slf4j;
@@ -30,6 +32,13 @@ public class GameController {
         this.service = service;
     }
 
+    @GetMapping
+    public ResponseEntity<Void> start(@RequestHeader("Authorization") String token) {
+        log.info("m=start");
+        service.start(authService.getUserId(token));
+        return ResponseEntity.ok().build();
+    }
+
     @GetMapping("/next-round")
     public ResponseEntity<List<Movie>> nextRound(@RequestHeader("Authorization") String token) {
         log.info("m=nextRound");
@@ -40,11 +49,11 @@ public class GameController {
     }
 
     @PostMapping("/hit")
-    public ResponseEntity<Boolean> hit(@RequestHeader("Authorization") String token, @RequestBody String imdbID) {
+    public ResponseEntity<GameRoundDTO> hit(@RequestHeader("Authorization") String token, @RequestBody String imdbID) {
         log.info("m=hit");
 
-        boolean isRightHit = service.hit(authService.getUserId(token), imdbID);
+        GameRoundDTO dto = service.hit(authService.getUserId(token), imdbID);
 
-        return ResponseEntity.ok(isRightHit);
+        return ResponseEntity.ok(dto);
     }
 }
