@@ -16,7 +16,7 @@ export class UserService {
   }
 
   singup(userName: string, userPassword: string): Observable<any> {
-    return this.httpClient.post(`${environment.backend}singup`, {
+    return this.httpClient.post(`${environment.backend}user`, {
       name: userName,
       password: userPassword,
     });

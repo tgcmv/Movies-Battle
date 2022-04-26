@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/authentication/authentication.service';
+import { UserService } from 'src/app/service/user.service';
 
 @Component({
   selector: 'app-new-user',
@@ -11,21 +13,21 @@ export class NewUserComponent implements OnInit {
   user = '';
   password = '';
 
-  constructor(private authService: AuthenticationService) { }
+  constructor(private userService: UserService, private router: Router) { }
 
   ngOnInit(): void {
   }
 
   createUser(){
-    // this.authService.authenticate(this.user, this.password)
-    // .subscribe(
-    //   () => {
-    //     this.router.navigate(['game']);
-    //   },
-    //   (error : any) => {
-    //     alert('invalid user or password');
-    //     console.log(error);
-    //   }
-    // );
+    this.userService.singup(this.user, this.password)
+    .subscribe(
+      () => {
+        this.router.navigate(['game']);
+      },
+      (error : any) => {
+        alert('invalid user or password');
+        console.log(error);
+      }
+    );
   }
 }
