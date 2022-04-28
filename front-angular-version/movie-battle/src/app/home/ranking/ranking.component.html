@@ -1,0 +1,15 @@
+<hr />
+<br />
+<h4 class="text-center">Ranking</h4>
+<table class="table">
+    <thead>
+      <th scope="col">Name</th>
+      <th scope="col">Score</th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let ranking of rankings">
+        <td>{{ranking.name}}</td>
+        <td>{{ranking.score}}</td>
+      </tr>
+    </tbody>
+  </table>

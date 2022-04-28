@@ -1,0 +1,36 @@
+<h4 class="text-center">Clique no filme que achas que tem maior pontuação. Será que acertas?</h4>
+
+<table *ngIf="game" class="table">
+    <thead>
+      <th scope="col">Game status</th>
+      <th scope="col">Score</th>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          Acertos: {{game?.points}}
+          Erros: {{game?.wrongs}}
+        </td>
+        <td>
+          Filme {{game?.movieA?.Title}} tinha o score <b>{{game?.movieA?.imdbRating}}</b>
+          Filme {{game?.movieB?.Title}} tinha o score <b>{{game?.movieB?.imdbRating}}</b>
+          Você acertou o palpite? {{game?.isRightHit}}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <hr />
+  <br />
+
+<ul class="list-movies">
+  <li  *ngFor="let movie of movies">
+    <a (click)="movieSelect(movie.imdbID)" class="btn btn-outline-dark" role="button" aria-pressed="true">
+        Filme: {{ movie.Title }}
+        <br /> 
+        Lançado no ano: {{ movie.Year }}
+        <img class="poster" [src]="movie.Poster" alt="Poster movie" /></a>
+  </li>
+</ul>
+
+
