@@ -15,10 +15,8 @@ import java.util.Map;
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class HttpApiUtil {
 
-    public static String httpGet(String stringURL, Map<String, String> parameters) {
+    public static String httpGet(String stringURL, Map<String, String> parameters) throws IOException {
 
-        //TODO get api key with env ?apikey=38767cb0&i=tt0458339
-        try {
             URL url = new URL(stringURL + "?" + HttpApiUtil.getParamsString(parameters));
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
             con.setRequestProperty("Content-Type", "application/json");
@@ -29,7 +27,7 @@ public class HttpApiUtil {
             BufferedReader in = new BufferedReader(
                     new InputStreamReader(con.getInputStream()));
             String inputLine;
-            StringBuffer content = new StringBuffer();
+            StringBuilder content = new StringBuilder();
             while ((inputLine = in.readLine()) != null) {
                 content.append(inputLine);
             }
@@ -38,10 +36,6 @@ public class HttpApiUtil {
             con.disconnect();
 
             return content.toString();
-
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
     }
 
     private static String getParamsString(Map<String, String> params)

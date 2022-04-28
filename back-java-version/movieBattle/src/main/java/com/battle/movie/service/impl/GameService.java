@@ -13,7 +13,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.tuple.Pair;
 import org.springframework.stereotype.Service;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
@@ -121,8 +120,7 @@ public class GameService implements IGameService {
             }
             movieB = movieService.getRandomMovie();
         }
-        Pair<Movie, Movie> pairMovies = Pair.of(movieA, movieB);
-        return pairMovies;
+        return Pair.of(movieA, movieB);
     }
 
     private void registerSortedMovies(GameRound game, Pair<Movie, Movie> pairMovies) {
@@ -159,8 +157,8 @@ public class GameService implements IGameService {
         if (!inProgressGames.isPresent()) {
             throw new IllegalStateException("Game not avaliable");
         }
-        GameRound game = inProgressGames.get();
-        return game;
+
+        return inProgressGames.get();
     }
 
     private boolean hasNotAnswredMovie(GameRound game) {
@@ -178,15 +176,9 @@ public class GameService implements IGameService {
         Movie movieA = movieService.getImdbDataMovie(pairMovies.getMovieA());
         Movie movieB = movieService.getImdbDataMovie(pairMovies.getMovieB());
 
-        System.err.println(imdbID);
-        System.err.println(movieA.getImdbID() + " " + movieA.getTitle() + "  " +  movieA.getImdbRating());
-        System.err.println(movieB.getImdbID() + " " + movieB.getTitle() + "  " +  movieB.getImdbRating());
-        System.err.println(movieA.getImdbRating().compareTo(movieB.getImdbRating()));
-        System.err.println(movieA.getImdbRating().compareTo(movieB.getImdbRating()) > 1 ? pairMovies.getMovieA() : pairMovies.getMovieB());
         boolean isRightHit =
                 imdbID.trim().equalsIgnoreCase(movieA.getImdbRating().compareTo(movieB.getImdbRating()) > 0 ? movieA.getImdbID().trim() : movieB.getImdbID().trim())
                 || movieA.getImdbRating().compareTo(movieB.getImdbRating()) == 0;
-        System.err.println(isRightHit);
 
         pairMovies.setAnswered(true);
         pairMoviesRepository.save(pairMovies);

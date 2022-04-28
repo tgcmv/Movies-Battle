@@ -13,8 +13,9 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.math.BigDecimal;
 import java.nio.charset.StandardCharsets;
+import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
 import java.util.List;
 import java.util.Random;
 
@@ -22,10 +23,18 @@ import java.util.Random;
 @Slf4j
 public class MovieService implements IMovieService {
 
+    private final Random rand;
+
     private final MovieRepository repository;
 
     public MovieService(MovieRepository movieRepository) {
         this.repository = movieRepository;
+
+        try {
+            rand = SecureRandom.getInstanceStrong();
+        } catch (NoSuchAlgorithmException e) {
+            throw new RuntimeException(e); //NOSONAR
+        }
     }
 
     @Override
@@ -50,7 +59,7 @@ public class MovieService implements IMovieService {
 
     @Override
     public Movie getMovie(String movieId) {
-        return repository.findByImdbID(movieId).get();
+        return repository.findByImdbID(movieId).orElse(Movie.builder().build());
     }
 
     @Override
@@ -59,19 +68,18 @@ public class MovieService implements IMovieService {
         try {
             return api.getMovie(movieID);
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            throw new RuntimeException(e); //NOSONAR
         }
     }
 
     @Cacheable
-    public Movie getRandomMovie(){
-        Random rand = new Random();
+    public Movie getRandomMovie() {
         List<Movie> movies = listOfMovies();
-        return movies.get(rand.nextInt(movies.size()));
+        return movies.get(this.rand.nextInt(movies.size()));
     }
 
     @Cacheable
-    private List<Movie> listOfMovies(){
+    private List<Movie> listOfMovies() {
         return repository.findAll();
     }
 

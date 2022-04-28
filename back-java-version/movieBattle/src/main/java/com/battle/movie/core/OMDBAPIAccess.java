@@ -9,9 +9,7 @@ import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.HashMap;
-import java.util.UUID;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class OMDBAPIAccess {
@@ -29,15 +27,6 @@ public class OMDBAPIAccess {
     public Movie  getMovie(String imdbID) throws IOException {
         String result = HttpApiUtil.httpGet(URL, getParamsById(imdbID));
         return mapperMovie(result);
-    }
-
-    public Movie getMovie(){
-        //TODO pegar um filme random do banco e consultar na api
-        return Movie.builder()
-                .title(UUID.randomUUID().toString())
-                .imdbID(UUID.randomUUID().toString())
-                .imdbRating(new BigDecimal(Math.random()))
-                .build();
     }
 
     private Movie mapperMovie(String result) throws JsonProcessingException {

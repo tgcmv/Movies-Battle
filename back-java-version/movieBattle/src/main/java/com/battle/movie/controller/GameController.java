@@ -1,16 +1,12 @@
 package com.battle.movie.controller;
 
-import com.battle.movie.core.Game;
 import com.battle.movie.model.Movie;
 import com.battle.movie.model.dto.GameRoundDTO;
 import com.battle.movie.service.IGameService;
 import com.battle.movie.service.impl.AuthenticationService;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang3.tuple.Pair;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;

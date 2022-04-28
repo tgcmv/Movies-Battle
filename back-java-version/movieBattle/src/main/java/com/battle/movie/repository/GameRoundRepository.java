@@ -4,7 +4,6 @@ import com.battle.movie.core.GameStatus;
 import com.battle.movie.model.GameRound;
 import com.battle.movie.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 

@@ -55,8 +55,4 @@ public class RankingService implements IRankingService {
 
         return userScore.values();
     }
-
-    private BigDecimal calculateFinalScore(Integer score, Integer wrong) {
-        return new BigDecimal(score / (score + wrong));
-    }
 }

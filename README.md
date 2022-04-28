@@ -15,6 +15,9 @@ API:
 
 http://localhost:8080/swagger-ui.html
 
+Sonar:
+![](sonar.png)
+
 Como rodar:
 Na pasta do backend execute os comandos
 - mvn install
